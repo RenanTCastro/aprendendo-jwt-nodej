@@ -1,0 +1,32 @@
+O JWT (JSON Web Token) é um padrão que define como transmitir informações de forma segura usando JSON como base. Ele utiliza um par de chaves públicas e privadas com algoritmos como HS256 ou RS256 para garantir a integridade dos dados.
+
+O JWT é amplamente utilizado para autorização e transmissão segura de informações. Ele é composto por três partes:
+
+Header – Contém metadados, como o tipo de token e o algoritmo de criptografia.
+Payload – Armazena as informações (claims) que serão transmitidas.
+Signature – Garante que o token não foi alterado, assinando digitalmente os dados.
+
+Para esse projeto, foi utilziado a biblioteca jsonwebtoken.
+
+A biblioteca jsonwebtoken (JWT) no Node.js tem essencialmente três funções principais:
+
+sign(payload, secretOrPrivateKey, [options, callback])
+
+    Cria um token assinado (JWT).
+    O payload pode ser um objeto JSON, uma string ou um buffer.
+    O secretOrPrivateKey é a chave secreta usada para assinar o token.
+    Pode incluir opções como tempo de expiração (expiresIn), algoritmo de assinatura (algorithm), entre outros.
+    Pode ser usada de forma síncrona (retornando o token diretamente) ou assíncrona (recebendo um callback ou retornando uma Promise).
+
+verify(token, secretOrPublicKey, [options, callback])
+
+    Verifica se um token JWT é válido e não expirou.
+    Retorna o payload decodificado caso seja válido.
+    Se o token for inválido ou expirado, lança um erro.
+    Pode ser usada de forma síncrona (retornando o payload) ou assíncrona (usando callback ou Promise).
+
+decode(token, [options])
+
+    Decodifica um token sem verificar a assinatura ou a validade.
+    Pode ser útil para extrair informações sem precisar da chave secreta.
+    Diferente do verify, ele apenas retorna o payload do token sem validar sua autenticidade.
